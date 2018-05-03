@@ -35,12 +35,12 @@ chmod +x 1-create-source-repos.sh
 1. In the GCP Console, click **Build Triggers** in the Container Registry section.
 2. Select **Cloud Source Repository** and click **Continue**.
 3. Select your newly created bookinfo-app-name repository from the list, and click Continue.
-4. Set the following trigger settings
-   Name: `bookinfo-app-name-tags`
-   Trigger type: `Tag`
-   Tag (regex): `v.*`
-   Build configuration: `cloudbuild.yaml`
-   cloudbuild.yaml location: `/cloudbuild.yaml`
+4. Set the following trigger settings  
+   Name: `bookinfo-app-name-tags`  
+   Trigger type: `Tag`  
+   Tag (regex): `v.*`  
+   Build configuration: `cloudbuild.yaml`  
+   cloudbuild.yaml location: `/cloudbuild.yaml`  
 5. Do this for all repos: `bookinfo-details`  `bookinfo-productpage`  `bookinfo-ratings`  `bookinfo-reviews`
 
 **5. Create Tags and commit to trigger Build.**
