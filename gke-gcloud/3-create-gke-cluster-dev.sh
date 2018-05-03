@@ -1,15 +1,18 @@
 #!/bin/bash
+. set-vars.sh
 
 gcloud config set project $DEV_PROJECT_ID
 gcloud services enable iam.googleapis.com
 gcloud services enable cloudresourcemanager.googleapis.com
 gcloud services enable compute.googleapis.com
 gcloud services enable container.googleapis.com
-gcloud iam service-accounts create $DEV_GKE_SA --project $SHARED_PROJECT_ID --display-name $SHARED_GKE_SA
-gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$SHARED_GKE_SA_EMAIL --role roles/storage.admin
-gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$SHARED_GKE_SA_EMAIL --role roles/logging.logWriter
-gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$SHARED_GKE_SA_EMAIL --role roles/monitoring.metricWriter
-gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$SHARED_GKE_SA_EMAIL --role roles/container.admin
+gcloud iam service-accounts create $DEV_GKE_SA --project $DEV_PROJECT_ID --display-name $DEV_GKE_SA
+gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$DEV_GKE_SA_EMAIL --role roles/storage.admin
+gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$DEV_GKE_SA_EMAIL --role roles/logging.logWriter
+gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$DEV_GKE_SA_EMAIL --role roles/monitoring.metricWriter
+gcloud projects add-iam-policy-binding $DEV_PROJECT_ID --member serviceAccount:$DEV_GKE_SA_EMAIL --role roles/container.admin
+# ACCESS TO SHARED CLUSTERS GCR
+gcloud projects add-iam-policy-binding $SHARED_PROJECT_ID --member serviceAccount:$DEV_GKE_SA_EMAIL --role roles/storage.objectViewer
 gcloud container clusters create $DEV_CLUSTER_NAME \
 	--project $DEV_PROJECT_ID \
 	--network "default" \

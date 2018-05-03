@@ -1,4 +1,5 @@
 #!/bin/bash
+. set-vars.sh
 
 gcloud config set project $SHARED_PROJECT_ID
 gcloud services enable sourcerepo.googleapis.com
