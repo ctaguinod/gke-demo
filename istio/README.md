@@ -3,7 +3,6 @@
 This is a quick guide to do a demo based on the Istio official docs:
 1. [Istio Offical Docs](https://istio.io/docs/) 
 2. [Quick Start with Google Kubernetes Engine](https://istio.io/docs/setup/kubernetes/quick-start-gke-dm.html)
-3. [Traffic Management](https://istio.io/docs/tasks/traffic-management/)
 
 ### Usage
 
@@ -17,9 +16,13 @@ cd istio/
 **2. Modify the variables configured in the file `set-vars.sh`.**  
 Default variables: 
 ```
+# GKE Cluster and GCP Project to Install Istio
 CLUSTER_NAME=dev
 PROJECT_ID=$USER-$CLUSTER_NAME
-ISTIO_VERSION=0.7.1
+# GCP Project with Container Registry
+SHARED_CLUSTER_NAME=shared
+SHARED_PROJECT_ID=$USER-$SHARED_CLUSTER_NAME
+# LATEST RELEASE: https://github.com/istio/istio/releases
 ```
 
 **3. Install Istio and addons to GKE Cluster.**  
