@@ -10,8 +10,10 @@ git clone https://github.com/ctaguinod/gke-demo/
 cd gke-demo/gke-gcloud/
 ```
 
-**2. Modify the variables configured in the file `set-vars.sh`.**
-The default variables will craete 3 GCP Projects and 3 GKE Clusters: `shared` `prod` `dev`
+**2. Modify the variables configured in the file `set-vars.sh`.**  
+The default variables will create 3 GCP Projects: `$USER-shared` `$USER-prod` `$USER-dev`  
+and  
+3 GKE Clusters: `shared` `prod` `dev`  
 
 **3. Create GCP Projects.**
 ```
