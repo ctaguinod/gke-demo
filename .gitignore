@@ -4,6 +4,7 @@
 *.tar
 *.tar.gz
 disabled
+bak
 bin
 tmp
 *.swp
