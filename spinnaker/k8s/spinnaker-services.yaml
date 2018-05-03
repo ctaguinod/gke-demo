@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: spinnaker
+  labels:
+    app: spin
+    stack: gate
+  name: spin-gate-lb
+spec:
+  type: LoadBalancer
+  loadBalancerIP: SPINNAKERAPI 
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8084
+    protocol: TCP
+  selector:
+    load-balancer-spin-gate: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: spinnaker
+  labels:
+    app: spin
+    stack: deck
+  name: spin-deck-lb
+spec:
+  type: LoadBalancer
+  loadBalancerIP: SPINNAKERUI
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9000
+    protocol: TCP
+  selector:
+    load-balancer-spin-deck: "true"
