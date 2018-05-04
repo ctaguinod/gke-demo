@@ -1,6 +1,8 @@
 #!/bin/bash
 . set-vars.sh
 
+gcloud config set project $SHARED_PROJECT_ID
+
 # Generate key for the spinnaker iam service account
 gcloud iam service-accounts keys create $SPINNAKER_SA_DEST \
 	--iam-account $SPINNAKER_SA_EMAIL
@@ -68,14 +70,14 @@ hal config security authn oauth2 edit --provider google \
 hal config security authn oauth2 enable
 
 # Configure Static IPs 
-sed -i -e "s/SPINNAKERUI/$SPINNAKERUI/g" spinnaker-services.yaml
-sed -i -e "s/SPINNAKERAPI/$SPINNAKERAPI/g" spinnaker-services.yaml
+sed -i -e "s/SPINNAKERUI/$SPINNAKERUI/g" k8s/spinnaker-services.yaml
+sed -i -e "s/SPINNAKERAPI/$SPINNAKERAPI/g" k8s/spinnaker-services.yaml
 
 # Create spinnaker namespace
 kubectl create namespace spinnaker
 
 # Create services / load balancer
-kubectl create -f spinnaker-services.yaml
+kubectl create -f k8s/spinnaker-services.yaml
 
 # Update Spinnaker URL
 hal config security ui edit \
