@@ -25,25 +25,31 @@ SHARED_PROJECT_ID=$USER-$SHARED_CLUSTER_NAME
 # LATEST RELEASE: https://github.com/istio/istio/releases
 ```
 
-**3. Install Istio and addons to GKE Cluster.**  
+**3. Deploy Istio.**  
 ```
-chmod +x 1-install-istio.sh
-./1-install-istio.sh
-```
-
-**4. Install Bookinfo App.**
-```
-chmod +x 2-install-bookinfo.sh
-./2-install-bookinfo.sh
+chmod +x 1-deploy-istio.sh
+./1-deploy-istio.sh
 ```
 
-**5. Port forward Addons: Zipkin, Grafana, Dotviz and Prometheus.**  
+**4. Deploy Observability addons.**  
 ```
-chmod +x 3-port-forward-addons.sh
-./3-port-forward-addons.sh
+chmod +x 2-deploy-observability-addons.sh
+./2-deploy-observability-addons.sh
 ```
 
-Use Cloud Shells [Web Preview](https://cloud.google.com/shell/docs/using-web-preview) to access the following: 
+**5. Deploy Bookinfo App.**
+```
+chmod +x 3-deploy-bookinfo.sh
+./3-deploy-bookinfo.sh
+```
+
+**6. Port forward Addons: Zipkin, Grafana, Dotviz and Prometheus.**  
+```
+chmod +x 4-port-forward-addons.sh
+./4-port-forward-addons.sh
+```
+
+Use Cloud Shell [Web Preview](https://cloud.google.com/shell/docs/using-web-preview) to access the following: 
 
 ```
 Zipkin URL/Port: http://localhost:9411

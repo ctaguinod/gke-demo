@@ -14,17 +14,6 @@ kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-ad
 curl -L https://git.io/getLatestIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
 kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/istio-auth.yaml
 
-# Install observability addons
-# grafana
-kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/addons/grafana.yaml
-# prometheus
-kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/addons/prometheus.yaml
-# servicegraph
-kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/addons/servicegraph.yaml
-# zipkin
-kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/addons/zipkin.yaml
-kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/addons/zipkin-to-stackdriver.yaml
-
 # Setup Automatic Sidecar Injection
 # https://istio.io/docs/setup/kubernetes/sidecar-injection.html#automatic-sidecar-injection
 kubectl apply -f istio-$ISTIO_VERSION/install/kubernetes/istio.yaml
