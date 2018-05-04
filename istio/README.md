@@ -23,6 +23,7 @@ PROJECT_ID=$USER-$CLUSTER_NAME
 SHARED_CLUSTER_NAME=shared
 SHARED_PROJECT_ID=$USER-$SHARED_CLUSTER_NAME
 # LATEST RELEASE: https://github.com/istio/istio/releases
+ISTIO_VERSION=0.7.1
 ```
 
 **3. Deploy Istio.**  
@@ -73,15 +74,15 @@ kubectl config use-context $CONTEXT
 export PATH=$PWD/istio-$ISTIO_VERSION/bin:$PATH
 ```
 
-`istioctl create -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml` - *This will to route all traffic to bookinfo V1. Refresh the page couple of times to verify all traffic is routed to V1.*  
+`istioctl create -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml` - *This will route all traffic to bookinfo V1. Refresh the page couple of times to verify all traffic is routed to V1.*  
 
 `istioctl create -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-reviews-test-v2.yaml` - *This will route user `jason` to bookinfo V2. Login as user `jason` and traffic should be routed to V2.*  
 
 `istioctl get routerules` - *List router rules*  
 
-`istioctl delete -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml` - *Delete this router rule*  
+`istioctl delete -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml` - *Delete router rule*  
 
-`istioctl delete -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-reviews-test-v2.yaml` - *Delete this router rule*  
+`istioctl delete -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-reviews-test-v2.yaml` - *Delete router rule*  
 
 You can test other capabilities of Istio by following guides here: https://istio.io/docs/tasks/traffic-management/
 
