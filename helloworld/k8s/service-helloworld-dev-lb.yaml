@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld-dev-lb
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+  selector:
+    load-balancer-helloworld-dev-lb: "true"
+  type: LoadBalancer
+---
