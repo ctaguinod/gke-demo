@@ -42,6 +42,11 @@ chmod +x 2-deploy-observability-addons.sh
 chmod +x 3-deploy-bookinfo.sh
 ./3-deploy-bookinfo.sh
 ```
+To get Bookinfo URL
+```
+chmod +x get-bookinfo-url.sh
+./get-bookinfo-url.sh
+```
 
 **6. Port forward Addons: Zipkin, Grafana, Dotviz and Prometheus.**  
 ```
@@ -57,4 +62,28 @@ Grafana URL/Port: http://localhost:3000
 Dotviz URL/Port: http://localhost:8088/dotviz
 Prometheus URL/Port: http://localhost:9090/graph
 ```
+
+**7. [Configure Request Routing](https://istio.io/docs/tasks/traffic-management/request-routing.html).**
+
+```
+. set-vars.sh
+gcloud config set project $PROJECT_ID
+CONTEXT=`kubectl config get-contexts | grep $CLUSTER_NAME | awk '{print $2;}'`
+kubectl config use-context $CONTEXT
+export PATH=$PWD/istio-$ISTIO_VERSION/bin:$PATH
+```
+
+`istioctl create -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml` - *This will to route all traffic to bookinfo V1. Refresh the page couple of times to verify all traffic is routed to V1.*  
+
+`istioctl create -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-reviews-test-v2.yaml` - *This will route user `jason` to bookinfo V2. Login as user `jason` and traffic should be routed to V2.*  
+
+`istioctl get routerules` - *List router rules*  
+
+`istioctl delete -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml` - *Delete this router rule*  
+
+`istioctl delete -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-reviews-test-v2.yaml` - *Delete this router rule*  
+
+You can test other capabilities of Istio by following guides here: https://istio.io/docs/tasks/traffic-management/
+
+**8. Explore Zipkin, Grafana, Service Graph and Prometheus.** - *It should now provide details on whats happening on bookinfo.*
 

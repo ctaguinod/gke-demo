@@ -1,0 +1,11 @@
+#!/bin/bash
+. set-vars.sh
+
+# Set Shared Project
+gcloud config set project $PROJECT_ID
+CONTEXT=`kubectl config get-contexts | grep $CLUSTER_NAME | awk '{print $2;}'`
+kubectl config use-context $CONTEXT
+
+export PATH=$PWD/istio-$ISTIO_VERSION/bin:$PATH
+
+istioctl create -f istio-$ISTIO_VERSION/samples/bookinfo/kube/route-rule-all-v1.yaml
