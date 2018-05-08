@@ -11,7 +11,7 @@ References:
 **1. Clone this repo.**  
 ```
 git clone https://github.com/ctaguinod/gke-demo/
-cd spinnaker/
+cd gke-demo/spinnaker/
 ```
 
 **2. Modify the variables configured in the file `set-vars.sh`.**  

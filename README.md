@@ -26,13 +26,13 @@ This guide will do the following:
 3. Create [Build Triggers](https://cloud.google.com/container-builder/) to automatically Build Containers Images.
 4. Upload Container Images to [Container Registry](https://cloud.google.com/container-registry/)
 
-### 4. [Istio](istio/)
+### 4. [istio](istio/)
 
 1. Deploy Istio to GKE Dev cluster.  
 2. Deploy Bookinfo to Istio enabled GKE Dev cluster.  
 
 
-### 5. [Spinnaker](spinnaker/)
+### 5. [spinnaker](spinnaker/)
 
 1. Provision Compute Engine Instance to use for Halyard.  
 2. Deploy Spinnaker to the GKE Shared cluster.  
