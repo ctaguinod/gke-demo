@@ -57,9 +57,20 @@ chmod +x 6-setup-halyard.sh
 ./6-setup-halyard.sh
 ```
 
-**9. Access Spinnkaer UI - `spinnaker.$SPINNAKER_DOMAIN_URL`**
+**9. Access Spinnkaer UI - `http://spinnaker.$SPINNAKER_DOMAIN_URL`**
+Login using your email from the oAuth Configured domain in the variable `OAUTH_ALLOWED_DOMAIN`  
 
 
-**10. Create Pipeline**
-```
-```
+**10. Create `helloworld` test Pipeline**  
+1. Click **Actions** > **Create Application**  
+   Name: `helloworld`  
+   Owner Email: `your@email.address`  
+2. Click **Create**   
+3. Go to `Applications` > `helloworld` > Click `Pipelines` > `Create`  
+   Type: pipeline  
+   Pipeline Name: `helloworld test pipeline`
+4. Click **Create**   
+5. Click **Configure** > **Pipeline Actions** > **Edit as JSON**
+6. Copy test pipeline from [pipeline/helloworld-pipeline-json.txt](pipeline/helloworld-pipeline-json.txt) and Paste the pipeline.
+7. Click **Update Pipeline**
+
