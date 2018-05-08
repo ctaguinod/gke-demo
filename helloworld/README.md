@@ -14,7 +14,7 @@ git clone https://github.com/ctaguinod/gke-demo/
 cd gke-demo/helloworld/
 ```
 
-**2. Modify the variables configured in the file `set-vars.sh`.**
+**2. Modify the variables configured in the file `set-vars.sh`.**  
 Default variables: 
 ```
 CLUSTER_NAME=shared
