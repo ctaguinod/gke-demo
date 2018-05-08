@@ -31,7 +31,7 @@ chmod +x 1-create-source-repos.sh
 ./1-create-source-repos.sh
 ```
 
-This script creates a `bookinfo-details`, `bookinfo-productpage, `bookinfo-ratings` and `bookinfo-reviews`` Private Git Repositories in Google Source Repositories and pushes the bookinfo codes.
+This script creates `bookinfo-details`, `bookinfo-productpage`, `bookinfo-ratings` and `bookinfo-reviews` Private Git Repositories in Google Source Repositories and pushes the bookinfo codes.
 ```
 cd bookinfo-details
 git init

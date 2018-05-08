@@ -1,4 +1,4 @@
-## Bookinfo 
+## helloworld
 
 This guide will do the following:
 1. Create Git repositories for the helloworld sample app in [Google Source Repositories](https://cloud.google.com/source-repositories/)
