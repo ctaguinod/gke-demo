@@ -10,7 +10,7 @@ This is a quick guide to do a demo based on the Istio official docs:
 
 ```
 git clone https://github.com/ctaguinod/gke-demo/
-cd istio/
+cd gke-demo/istio/
 ```
 
 **2. Modify the variables configured in the file `set-vars.sh`.**  
